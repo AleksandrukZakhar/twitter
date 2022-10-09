@@ -1,9 +1,11 @@
 import Sidebar from "./Sidebar.js";
+import Posts from "./Posts.js";
 
 const App = () => {
     return (
-        <div className="App">
+        <div className="app">
             <Sidebar />
+            <Posts />
         </div>
     );
 };
