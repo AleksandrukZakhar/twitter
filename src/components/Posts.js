@@ -1,120 +1,21 @@
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useContext } from "react";
+import { appContext } from "./App.js";
+import { collection } from "firebase/firestore";
 import Post from "./Post.js";
+import { uid } from "uid";
 
 const Posts = () => {
+    const { db } = useContext(appContext);
+    const [data] = useCollectionData(collection(db, "posts"));
+
     return (
         <div className="posts-container">
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
-            <Post
-                profileName={"name"}
-                profileUserName={"@name"}
-                text={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ullam sequi ipsum, totam dolorum similique."
-                }
-            />
+            {data?.map((post) => {
+                const { text } = post;
+
+                return <Post text={text} key={uid()} />;
+            })}
         </div>
     );
 };

@@ -1,7 +1,11 @@
 import Logo from "../assets/logo.png";
+import { useState } from "react";
+import TweetModal from "./TweetModal.js";
 import ProfileRef from "./ProfileRef.js";
 
 const Sidebar = () => {
+    const [show, setShow] = useState(false);
+
     return (
         <div className="sidebar-container">
             <img src={Logo} alt="" />
@@ -13,7 +17,14 @@ const Sidebar = () => {
             <p>Lists</p>
             <p>Profile</p>
             <p>More</p>
-            <button>Tweet</button>
+            <button onClick={() => setShow(true)}>Tweet</button>
+            {show ? (
+                <TweetModal
+                    profileName={"name"}
+                    profileUserName={"@name"}
+                    setShow={setShow}
+                />
+            ) : null}
             <ProfileRef profileName={"name"} profileUserName={"@name"} />
         </div>
     );
