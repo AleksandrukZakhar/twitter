@@ -1,11 +1,15 @@
 import User from "../assets/user.png";
+import { useContext } from "react";
+import { appContext } from "./App.js";
 
-const Post = ({ profileName, profileUserName, text }) => {
+const Post = ({ img, profileName, profileUserName, text, postId, id }) => {
+    const { db } = useContext(appContext);
+
     return (
         <div className="post-container">
-            <img src={User} alt="" />
-            <div>
-                <div>
+            <img className="profile-img" src={img ? img : User} alt="" />
+            <div className="post-content-container">
+                <div className="profile-container">
                     <p>{profileName}</p>
                     <p>{profileUserName}</p>
                 </div>
@@ -19,6 +23,7 @@ const Post = ({ profileName, profileUserName, text }) => {
                         stroke="currentColor"
                         width="20px"
                         height="20px"
+                        onClick={() => {}}
                     >
                         <path
                             strokeLinecap="round"

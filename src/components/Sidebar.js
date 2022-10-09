@@ -8,7 +8,7 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar-container">
-            <img src={Logo} alt="" />
+            <img className="logo" src={Logo} alt="" />
             <p id="home">Home</p>
             <p>Explore</p>
             <p>Notifications</p>
@@ -18,14 +18,8 @@ const Sidebar = () => {
             <p>Profile</p>
             <p>More</p>
             <button onClick={() => setShow(true)}>Tweet</button>
-            {show ? (
-                <TweetModal
-                    profileName={"name"}
-                    profileUserName={"@name"}
-                    setShow={setShow}
-                />
-            ) : null}
-            <ProfileRef profileName={"name"} profileUserName={"@name"} />
+            {show ? <TweetModal setShow={setShow} /> : null}
+            <ProfileRef />
         </div>
     );
 };
