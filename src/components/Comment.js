@@ -23,11 +23,19 @@ const Comment = ({ post, index }) => {
 
     return (
         <div className="post-container">
-            <img className="profile-img" src={img ? img : User} alt="" />
+            <img
+                className="profile-img"
+                src={
+                    comments[index].commentAuthorImg
+                        ? comments[index].commentAuthorImg
+                        : User
+                }
+                alt=""
+            />
             <div className="post-content-container">
                 <div className="profile-container">
-                    <p>{profileName}</p>
-                    <p>{profileUserName}</p>
+                    <p>{comments[index].commentAuthorName}</p>
+                    <p>{comments[index].commentAuthorUserName}</p>
                 </div>
                 <p>{comments[index].comment}</p>
                 <div className="toolbar">

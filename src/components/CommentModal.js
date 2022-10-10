@@ -51,6 +51,9 @@ const CommentModal = ({ setShow, post }) => {
                                 ...comments,
                                 {
                                     comment,
+                                    commentAuthorImg: user.photoURL,
+                                    commentAuthorName: user.displayName,
+                                    commentAuthorUserName: `@${user.displayName}`,
                                     likes: [],
                                     commentLikes: 0,
                                     id: uid(),
