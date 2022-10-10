@@ -23,6 +23,7 @@ const Posts = () => {
                         text,
                         id,
                         liked,
+                        likeCount,
                     } = post;
 
                     return (
@@ -34,6 +35,7 @@ const Posts = () => {
                             id={user.uid}
                             postId={id}
                             liked={liked}
+                            likeCount={likeCount}
                             key={uid()}
                         />
                     );

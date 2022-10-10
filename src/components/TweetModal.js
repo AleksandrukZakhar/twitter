@@ -36,6 +36,7 @@ const TweetModal = ({ setShow }) => {
                             profileUserName: `@${user.displayName}`,
                             img: user.photoURL,
                             liked: [],
+                            likeCount: 0,
                             text: post,
                         });
                         setShow(false);
