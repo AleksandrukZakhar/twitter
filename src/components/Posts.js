@@ -16,7 +16,14 @@ const Posts = () => {
                 <img className="loading" src={Loading} alt="" />
             ) : (
                 data?.map((post) => {
-                    const { profileName, profileUserName, img, text } = post;
+                    const {
+                        profileName,
+                        profileUserName,
+                        img,
+                        text,
+                        id,
+                        liked,
+                    } = post;
 
                     return (
                         <Post
@@ -25,7 +32,8 @@ const Posts = () => {
                             profileUserName={profileUserName}
                             text={text}
                             id={user.uid}
-                            postId={post.id}
+                            postId={id}
+                            liked={liked}
                             key={uid()}
                         />
                     );

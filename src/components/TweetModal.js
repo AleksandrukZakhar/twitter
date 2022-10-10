@@ -1,13 +1,14 @@
 import User from "../assets/user.png";
 import { useState, useContext } from "react";
 import { appContext } from "./App.js";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { uid } from "uid";
 
 const TweetModal = ({ setShow }) => {
     const [post, setPost] = useState(null);
     const { db, user } = useContext(appContext);
-    const postRef = collection(db, "posts");
+    const id = uid();
+    const postRef = doc(db, `posts/${id}`);
 
     return (
         <div className="modal-container">
@@ -29,8 +30,8 @@ const TweetModal = ({ setShow }) => {
                 ></textarea>
                 <button
                     onClick={async () => {
-                        addDoc(postRef, {
-                            id: uid(),
+                        setDoc(postRef, {
+                            id,
                             profileName: user.displayName,
                             profileUserName: `@${user.displayName}`,
                             img: user.photoURL,

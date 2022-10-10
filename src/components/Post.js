@@ -1,9 +1,19 @@
 import User from "../assets/user.png";
 import { useContext } from "react";
 import { appContext } from "./App.js";
+import { doc, updateDoc } from "firebase/firestore";
 
-const Post = ({ img, profileName, profileUserName, text, postId, id }) => {
+const Post = ({
+    img,
+    profileName,
+    profileUserName,
+    text,
+    postId,
+    liked,
+    id,
+}) => {
     const { db } = useContext(appContext);
+    const postRef = doc(db, `posts/${postId}`);
 
     return (
         <div className="post-container">
@@ -23,7 +33,16 @@ const Post = ({ img, profileName, profileUserName, text, postId, id }) => {
                         stroke="currentColor"
                         width="20px"
                         height="20px"
-                        onClick={() => {}}
+                        onClick={() => {
+                            updateDoc(postRef, {
+                                id: postId,
+                                profileName,
+                                profileUserName,
+                                img,
+                                liked: [...liked, id],
+                                text: text,
+                            });
+                        }}
                     >
                         <path
                             strokeLinecap="round"
