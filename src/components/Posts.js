@@ -7,7 +7,7 @@ import Post from "./Post.js";
 import { uid } from "uid";
 
 const Posts = () => {
-    const { db, user } = useContext(appContext);
+    const { db } = useContext(appContext);
     const [data, loading] = useCollectionData(collection(db, "posts"));
 
     return (
@@ -16,29 +16,7 @@ const Posts = () => {
                 <img className="loading" src={Loading} alt="" />
             ) : (
                 data?.map((post) => {
-                    const {
-                        profileName,
-                        profileUserName,
-                        img,
-                        text,
-                        id,
-                        liked,
-                        likeCount,
-                    } = post;
-
-                    return (
-                        <Post
-                            img={img}
-                            profileName={profileName}
-                            profileUserName={profileUserName}
-                            text={text}
-                            id={user.uid}
-                            postId={id}
-                            liked={liked}
-                            likeCount={likeCount}
-                            key={uid()}
-                        />
-                    );
+                    return <Post post={post} key={uid()} />;
                 })
             )}
         </div>

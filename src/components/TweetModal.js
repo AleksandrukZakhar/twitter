@@ -29,7 +29,7 @@ const TweetModal = ({ setShow }) => {
                     onChange={(e) => setPost(e.target.value)}
                 ></textarea>
                 <button
-                    onClick={async () => {
+                    onClick={() => {
                         setDoc(postRef, {
                             id,
                             profileName: user.displayName,
@@ -37,6 +37,8 @@ const TweetModal = ({ setShow }) => {
                             img: user.photoURL,
                             liked: [],
                             likeCount: 0,
+                            comments: [],
+                            commentsCount: 0,
                             text: post,
                         });
                         setShow(false);
